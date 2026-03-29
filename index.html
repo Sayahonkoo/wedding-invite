@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Рахат & Сая — Үйлену тойына шақыру</title>
+  <meta name="description" content="Рахат пен Саяның үйлену тойына арналған шақыру сайты" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #fff8f6;
+      --card: rgba(255, 255, 255, 0.88);
+      --accent: #a66a6a;
+      --accent-dark: #7f4b4b;
+      --text: #4b3737;
+      --muted: #8a6d6d;
+      --gold: #c9a96b;
+      --shadow: 0 12px 35px rgba(89, 57, 57, 0.12);
+      --radius: 24px;
+    }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(rgba(255,248,246,0.78), rgba(255,248,246,0.85)),
+        url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 32px 0;
+    }
+
+    .hero-card,
+    .section-card {
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.55);
+    }
+
+    .hero-card {
+      width: 100%;
+      text-align: center;
+      padding: 42px 22px;
+    }
+
+    .eyebrow {
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    h1, h2, .couple-names, .calendar-date {
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    .couple-names {
+      font-size: clamp(48px, 9vw, 92px);
+      line-height: 0.95;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .amp {
+      color: var(--gold);
+      font-size: 0.9em;
+      margin: 0 10px;
+    }
+
+    .hero-text {
+      max-width: 760px;
+      margin: 18px auto 0;
+      font-size: 17px;
+      color: var(--text);
+    }
+
+    .owners {
+      margin-top: 16px;
+      font-size: 17px;
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .detail-box {
+      background: rgba(255,255,255,0.92);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .detail-box h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .detail-box p {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
+    .countdown-title {
+      margin-top: 34px;
+      margin-bottom: 14px;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .time-box {
+      background: rgba(255,255,255,0.96);
+      border-radius: 20px;
+      padding: 18px 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .time-box span {
+      display: block;
+      font-size: clamp(28px, 6vw, 42px);
+      font-weight: 700;
+      color: var(--accent-dark);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .time-box small {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    section {
+      padding: 26px 0;
+    }
+
+    .section-card {
+      padding: 28px 20px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: clamp(34px, 5vw, 52px);
+      color: var(--accent-dark);
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .section-subtext {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 22px;
+      color: var(--muted);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .gallery-item {
+      background: #fff;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-item p {
+      padding: 14px;
+      text-align: center;
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    .calendar-box {
+      max-width: 420px;
+      margin: 0 auto 20px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 24px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+    }
+
+    .calendar-month {
+      font-size: 20px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .calendar-date {
+      font-size: 76px;
+      line-height: 1;
+      color: var(--accent-dark);
+      font-weight: 700;
+      margin: 6px 0;
+    }
+
+    .calendar-day {
+      font-size: 22px;
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    .calendar-time {
+      margin-top: 10px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 16px;
+      text-decoration: none;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      transition: 0.2s ease;
+      box-shadow: 0 8px 18px rgba(166,106,106,0.25);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--accent-dark);
+    }
+
+    .address {
+      text-align: center;
+      font-size: 17px;
+      max-width: 780px;
+      margin: 0 auto 18px;
+    }
+
+    form {
+      max-width: 620px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      font-weight: 600;
+      color: var(--accent-dark);
+      margin-bottom: -6px;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid #e8d7d7;
+      font-size: 16px;
+      font-family: inherit;
+      outline: none;
+      background: rgba(255,255,255,0.98);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(166,106,106,0.12);
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--accent-dark);
+    }
+
+    .note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 26px 16px 34px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .details,
+      .countdown,
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-item img {
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        background-attachment: scroll;
+      }
+
+      .hero-card,
+      .section-card {
+        padding: 22px 16px;
+      }
+
+      .details,
+      .countdown,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .calendar-date {
+        font-size: 64px;
+      }
+
+      .detail-box p,
+      .hero-text,
+      .address {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Үйлену тойына шақыру</div>
+        <div class="couple-names">Рахат <span class="amp">&</span> Сая</div>
+
+        <p class="hero-text">
+          Құрметті ағайын-туыс, бауырлар, құда-жекжат, дос-жарандар! Сіздерді
+          Рахат пен Саяның үйлену тойының қадірлі қонағы болуға шын жүректен шақырамыз.
+        </p>
+
+        <div class="owners">Той иелері: Арман-Шынар</div>
+
+        <div class="details">
+          <div class="detail-box">
+            <h3>Күні</h3>
+            <p>25 шілде 2026 жыл</p>
+          </div>
+          <div class="detail-box">
+            <h3>Уақыты</h3>
+            <p>18:00</p>
+          </div>
+          <div class="detail-box">
+            <h3>Өтетін орны</h3>
+            <p>Остров Резиденция мейрамханасы</p>
+          </div>
+        </div>
+
+        <div class="countdown-title">Той салтанатына дейін</div>
+        <div class="countdown">
+          <div class="time-box">
+            <span id="days">0</span>
+            <small>Күн</small>
+          </div>
+          <div class="time-box">
+            <span id="hours">0</span>
+            <small>Сағат</small>
+          </div>
+          <div class="time-box">
+            <span id="minutes">0</span>
+            <small>Минут</small>
+          </div>
+          <div class="time-box">
+            <span id="seconds">0</span>
+            <small>Секунд</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-card">
+        <h2>Біздің қуанышымыз</h2>
+        <p class="section-subtext">
+          Осы ерекше күнімізде сіздердің ақ тілектеріңіз бен жылы лебіздеріңіз біз үшін өте қымбат.
+        </p>
+
+        <div class="gallery">
+          <div class="gallery-item">
+            <img src="couple.jpg" alt="Рахат пен Сая">
+            <p>Рахат пен Сая</p>
+          </div>
+          <div class="gallery-item">
+            <img src="venue.jpg" alt="Той өтетін орын">
+            <p>Той өтетін орын</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-card">
+        <h2>Күнтізбе</h2>
+
+        <div class="calendar-box">
+          <div class="calendar-month">Шілде</div>
+          <div class="calendar-date">25</div>
+          <div class="calendar-day">Сенбі</div>
+          <div class="calendar-time">2026 жыл • 18:00</div>
+        </div>
+
+        <div class="buttons">
+          <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D0%A0%D0%B0%D1%85%D0%B0%D1%82%20%D0%BF%D0%B5%D0%BD%20%D0%A1%D0%B0%D1%8F%D0%BD%D1%8B%D2%A3%20%D2%AF%D0%B9%D0%BB%D0%B5%D0%BD%D1%83%20%D1%82%D0%BE%D0%B9%D1%8B&dates=20260725T130000Z/20260725T170000Z&details=%D0%A1%D1%96%D0%B7%D0%B4%D1%96%20%D1%82%D0%BE%D0%B9%D1%8B%D0%BC%D1%8B%D0%B7%D2%93%D0%B0%20%D1%88%D0%B0%D2%9B%D1%8B%D1%80%D0%B0%D0%BC%D1%8B%D0%B7&location=%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2%20%D0%A0%D0%B5%D0%B7%D0%B8%D0%B4%D0%B5%D0%BD%D1%86%D0%B8%D1%8F%20%D0%BC%D0%B5%D0%B9%D1%80%D0%B0%D0%BC%D1%85%D0%B0%D0%BD%D0%B0%D1%81%D1%8B%2C%20%D0%9F%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%9A%D0%B0%D0%BD%D1%8B%D1%88%D0%B0%20%D0%A1%D0%B0%D1%82%D0%BF%D0%B0%D0%B5%D0%B2%D0%B0%2C%20173%2C%20%D3%A8%D1%81%D0%BA%D0%B5%D0%BC%D0%B5%D0%BD%20%D2%9B%D0%B0%D0%BB%D0%B0%D1%81%D1%8B" target="_blank">
+            Күнтізбеге қосу
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-card">
+        <h2>Мекенжай</h2>
+        <p class="address">
+          Остров Резиденция мейрамханасы, Проспект Каныша Сатпаева, 173, Өскемен қаласы
+        </p>
+
+        <div class="buttons">
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2+%D0%A0%D0%B5%D0%B7%D0%B8%D0%B4%D0%B5%D0%BD%D1%86%D0%B8%D1%8F+%D0%BC%D0%B5%D0%B9%D1%80%D0%B0%D0%BC%D1%85%D0%B0%D0%BD%D0%B0%D1%81%D1%8B%2C+%D0%9F%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82+%D0%9A%D0%B0%D0%BD%D1%8B%D1%88%D0%B0+%D0%A1%D0%B0%D1%82%D0%BF%D0%B0%D0%B5%D0%B2%D0%B0%2C+173%2C+%D3%A8%D1%81%D0%BA%D0%B5%D0%BC%D0%B5%D0%BD+%D2%9B%D0%B0%D0%BB%D0%B0%D1%81%D1%8B" target="_blank">
+            Картадан ашу
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-card">
+        <h2>Жауап беру</h2>
+        <p class="section-subtext">
+          Қатысуыңызды алдын ала растауыңызды сұраймыз.
+        </p>
+
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+          <label for="name">Аты-жөніңіз</label>
+          <input type="text" id="name" name="name" placeholder="Аты-жөніңізді жазыңыз" required>
+
+          <label for="attendance">Тойға келе аласыз ба?</label>
+          <select id="attendance" name="attendance" required>
+            <option value="">Жауапты таңдаңыз</option>
+            <option value="Иә, келемін">Иә, келемін</option>
+            <option value="Иә, +1 адаммен келемін">Иә, +1 адаммен келемін</option>
+            <option value="Өкінішке қарай, келе алмаймын">Өкінішке қарай, келе алмаймын</option>
+          </select>
+
+          <label for="guests">Адам саны</label>
+          <input type="number" id="guests" name="guests" min="1" max="5" placeholder="Мысалы: 1 немесе 2">
+
+          <label for="message">Тілек</label>
+          <textarea id="message" name="message" rows="4" placeholder="Жылы тілегіңізді қалдыра аласыз"></textarea>
+
+          <button type="submit">Жіберу</button>
+        </form>
+
+        <p class="note">
+          RSVP формасының жұмыс істеуі үшін төмендегі нұсқаулық бойынша Formspree қосыңыз.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      Сіздерді қуанышымызбен бөлісуге асыға күтеміз!
+    </footer>
+  </div>
+
+  <script>
+    const weddingDate = new Date("2026-07-25T18:00:00+05:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("days").textContent = 0;
+        document.getElementById("hours").textContent = 0;
+        document.getElementById("minutes").textContent = 0;
+        document.getElementById("seconds").textContent = 0;
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
